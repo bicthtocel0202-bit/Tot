@@ -29,7 +29,6 @@ python process_ids.py
 This script can:
 - Read and display all video IDs
 - Validate ID format
-- Export IDs in different formats
 
 ## Requirements
 

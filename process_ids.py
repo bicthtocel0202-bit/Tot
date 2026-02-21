@@ -6,6 +6,9 @@ Utility script to process video IDs from links_id_only.txt
 import os
 import sys
 
+# Validation constants
+MIN_VIDEO_ID_LENGTH = 5
+
 
 def read_video_ids(filename='links_id_only.txt'):
     """
@@ -50,8 +53,9 @@ def validate_ids(ids):
     for video_id in ids:
         if not video_id:
             results.append((video_id, False, "Empty ID"))
-        elif len(video_id) < 5:
-            results.append((video_id, False, "ID too short"))
+        elif len(video_id) < MIN_VIDEO_ID_LENGTH:
+            results.append((video_id, False, f"ID too short (minimum {MIN_VIDEO_ID_LENGTH} characters)"))
+        # Video IDs in this collection follow a pattern ending with a digit
         elif not video_id[-1].isdigit():
             results.append((video_id, False, "ID should end with a digit"))
         else:
